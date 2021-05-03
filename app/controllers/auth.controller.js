@@ -8,7 +8,7 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
   const user = new User({
-    username: req.bodyone.username,
+    username: req.body.username,
     email: req.body.email,
     password: bcrypt.hashSync(req.body.password, 8)
   });
@@ -29,7 +29,7 @@ exports.signup = (req, res) => {
             res.status(500).send({ message: err });
             return;
           }
-          one
+
           user.roles = roles.map(role => role._id);
           user.save(err => {
             if (err) {
